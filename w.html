@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <form id="registrationform">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <label for="confirmpassword">Confirm Password:</label>
+        <input type="password" id="confirmpassword" name="confirmpassword"><br>
+        <input type="button" value="Register" onclick="validateForm()">
+    </form>
+
+    <script type="text/javascript">
+        function validateForm() {
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmpassword = document.getElementById("confirmpassword").value.trim();
+
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            
+            if (!username || username.length < 8) {
+                alert("Username must be at least 8 characters long.");
+            } else if (!email || !email.match(emailRegex)) {
+                alert("Please enter a valid email address.");
+            } else if (!password || password.length < 4) {
+                alert("Password must be at least 4 characters long.");
+            } else if (password !== confirmpassword) {
+                alert("Passwords do not match.");
+            } else {
+                alert("Registration successful!");
+            }
+        }
+    </script>
+</body>
+</html>
